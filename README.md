@@ -13,6 +13,10 @@ This repository supports DeepStreamSDK version 6.2, 6.3, 6.4, and 7.0 on Jetson 
 
 - YOLOv11
 
+### Instance Segmentation
+
+- YOLOv11
+
 ## Usage
 
 ### 1. Clone the repository
@@ -49,8 +53,8 @@ parse-bbox-func-name=NvDsInferParseYolo
 custom-lib-path=../libs/nvdsinfer_customparser_yolo/libnvds_infercustomparser_yolo.so
 ```
 
-### 6. Edit the `deepstream_app_config` file
-Edit the `deepstream_app_config.txt` file according to your GIE config file.
+### 6. Edit the `deepstream_app_det_config` file
+Edit the `deepstream_app_det_config.txt` file according to your GIE config file.
 ```
 [primary-gie]
 ...
@@ -59,7 +63,7 @@ config-file=config_primary_yolov11.txt
 
 ### 7. Run DeepStream Application
 ```bash
-deepstream-app -c deepstream_app_config.txt
+deepstream-app -c deepstream_app_det_config.txt
 ```
 
 ## Reference
