@@ -12,6 +12,7 @@ This repository supports DeepStreamSDK version 6.2, 6.3, 6.4, and 7.0 on Jetson 
 ### Object Detection
 
 - YOLOv11
+- D-FINE
 
 ### Instance Segmentation
 
