@@ -25,7 +25,13 @@ nvinfer1::ITensor *upsampleLayer(int layerIdx,
   assert(resize != nullptr);
   std::string resizeLayerName = "upsample_" + std::to_string(layerIdx);
   resize->setName(resizeLayerName.c_str());
+
+#if NV_TENSORRT_MAJOR > 8 || (NV_TENSORRT_MAJOR == 8 && NV_TENSORRT_MINOR > 4)
+  resize->setResizeMode(nvinfer1::InterpolationMode::kNEAREST);
+#else
   resize->setResizeMode(nvinfer1::ResizeMode::kNEAREST);
+#endif
+
   resize->setScales(scale, 4);
   output = resize->getOutput(0);
 
