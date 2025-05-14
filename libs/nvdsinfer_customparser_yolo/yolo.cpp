@@ -220,8 +220,21 @@ Yolo::createEngine(nvinfer1::IBuilder *builder)
   config->setProfilingVerbosity(nvinfer1::ProfilingVerbosity::kDETAILED);
 #endif
 
-  nvinfer1::ICudaEngine *engine =
-      builder->buildEngineWithConfig(*network, *config);
+#if NV_TENSORRT_MAJOR > 8 || (NV_TENSORRT_MAJOR == 8 && NV_TENSORRT_MINOR > 0)
+  nvinfer1::IRuntime *runtime =
+      nvinfer1::createInferRuntime(*builder->getLogger());
+#else
+  nvinfer1::IRuntime *runtime = nvinfer1::createInferRuntime(logger);
+#endif
+
+  assert(runtime);
+
+  nvinfer1::IHostMemory *serializedEngine =
+      builder->buildSerializedNetwork(*network, *config);
+
+  nvinfer1::ICudaEngine *engine = runtime->deserializeCudaEngine(
+      serializedEngine->data(), serializedEngine->size());
+
   if (engine) {
     std::cout << "Building complete\n" << std::endl;
   } else {
