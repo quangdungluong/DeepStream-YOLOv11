@@ -1,10 +1,10 @@
 # DeepStream-YOLOv11
 
 ## Introduction
-This repository offers plug-and-play custom parsers tailored for YOLOv11 AI models in DeepStream. Ideal for developers looking to streamline model parsing in DeepStream applications.
+This repository offers plug-and-play custom parsers tailored for AI models in DeepStream. Ideal for developers looking to streamline model parsing in DeepStream applications.
 
 ## Requirements
-This repository supports DeepStreamSDK version 6.2, 6.3, 6.4, and 7.0 on Jetson and dGPU platform. You can follow [this guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Installation.html) for detailed installation instructions.
+This repository supports DeepStreamSDK version 6.2, 6.3, 6.4, 7.0, and 7.1 on Jetson and dGPU platform. You can follow [this guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Installation.html) for detailed installation instructions.
 >Note: I prefer using Docker containers on both dGPU and Jetson platforms. These containers provide a convenient, out-of-the-box way to deploy DeepStream applications by packaging all associated dependencies within the container.
 
 ## Supported Models
@@ -14,7 +14,15 @@ This repository supports DeepStreamSDK version 6.2, 6.3, 6.4, and 7.0 on Jetson 
 - YOLOv11
 - D-FINE
 
+### Face Detection
+
+- SCRFD
+
 ### Instance Segmentation
+
+- YOLOv11
+
+### Pose Estimation
 
 - YOLOv11
 
